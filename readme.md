@@ -1,6 +1,10 @@
 # Assesment 3
-Voor assesment 3 heb ik deze bar chart gekozen van de d3 gallery op github ['https://bl.ocks.org/mbostock/3885304']
-Vervolgens ben ik op het CBS gaan zoeken naar een bruikbare dataset. Dat is deze geworden ['http://statline.cbs.nl/statweb/publication/?vw=t&dm=slnl&pa=37506wwm&d1=0-4&d2=0&d3=0&d4=(l-24)-l&hd=080402-1211&hdr=t&stb=g1,g2,g3']
+Voor assesment 3 heb ik deze bar chart gekozen van de d3 gallery op github [Barchart](https://bl.ocks.org/mbostock/3885304)
+Vervolgens ben ik op het CBS gaan zoeken naar een bruikbare dataset. Dat is deze geworden [Link naar dataset](http://statline.cbs.nl/statweb/publication/?vw=t&dm=slnl&pa=37506wwm&d1=0-4&d2=0&d3=0&d4=(l-24)-l&hd=080402-1211&hdr=t&stb=g1,g2,g3)
+
+Voor de sort functie heb ik code gepakt van deze barchart [Link naar sort barchart](https://bl.ocks.org/mbostock/3885705)
+
+Daarnaast heb ik veel hulp gehad van Bjorn Volkers en Dennis Spierenburg
 
 ## Werkwijze
 Omdat ik 2 barcharts wil laten zien, ben ik eerst begonnen met het declareren van beide. In de HTML heb ik beide een id gegeven en daarna ben ik ze binnen de javascript gaan aanroepen.
@@ -39,13 +43,15 @@ var xR = d3.scaleBand().rangeRound([0, widthR]).padding(0.1),
     yR = d3.scaleLinear().rangeRound([heightR, 0]);
 
 var gR = svgRight.append("g")
-    .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");```
+    .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");
+    ```
     
 Toen heb ik de code getypt die mijn dataset aanroept
 
 ```js
 var data = d3.text('data.csv')
-    .get(onload);```
+    .get(onload);
+    ```
 
 Daarna ben ik bezig gegaan met het opschonen van de data. Dit heb ik gedaan door dit stuk code toe te voegen.
 
@@ -56,7 +62,8 @@ var header = doc.indexOf('65 jaar');
     doc = doc.replace(/;+/g, ',')
     doc = doc.replace(/ +/g, ',')
     doc = doc.replace(/2014,/g, '')
-    var data = d3.csvParseRows(doc, map).slice(0, 12);```
+    var data = d3.csvParseRows(doc, map).slice(0, 12);
+    ```
     
 Ik heb de ```.slice``` gebruikt om de data van het jaar 2014 er tussenuit te halen.
 
@@ -72,16 +79,19 @@ function map(d) {
             West: Number(d[6]),
             Zuid: Number(d[7])
         }
-    }```
+    }
+    ```
     
     Hier vertel ik welke data er in mijn rechter grafiek getoond moet worden
+    
     ```js
     xL.domain(data.map(function (d) {
         return (d.Maand );
     }));
     yL.domain([0, d3.max(data, function (d) {
         return d.Totaal;
-    })]);```
+    })]);
+    ```
     
 Daarna ben ik mijn grafiek verder gaan bouwen
     ```js
@@ -125,7 +135,8 @@ Daarna ben ik mijn grafiek verder gaan bouwen
 
         .attr("height", function (d) {
             return heightL - yL(d.Totaal);
-        });```
+        });
+        ```
 
 Vervolgens heb ik een variabelen ```data2``` aangemaak waar ik de data voor grafiek 2 in ga stoppen. Daarna heb ik er voor gezorgd dat de benodigde data uit mijn data.csv file gepakt gaat worden.
 
@@ -137,7 +148,6 @@ var data2 = [];
     data.forEach(function (d) {
         totalCountry.push(d.Maand);
     })
-
     
     country = totalCountry[0];
     data2 = data.filter(filterCountry);
@@ -200,7 +210,8 @@ var barElement = gR.selectAll(".bar2")
     }
 function filterCountry(d) {
         return (d.Maand === country);
-    };```
+    };
+    ```
     
 Daarna heb ik er ook nog voor gezorgd dat de bars van de linker grafiek gesorteerd kunnen worden
 
@@ -228,6 +239,7 @@ transition.selectAll(".bar1")
         .call(d3.axisBottom(xL))
       .selectAll("g")
         .delay(delay);
-  }```
+  }
+  ```
     
     
