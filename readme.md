@@ -8,8 +8,7 @@ Daarnaast heb ik veel hulp gehad van Bjorn Volkers en Dennis Spierenburg
 
 ## Werkwijze
 Omdat ik 2 barcharts wil laten zien, ben ik eerst begonnen met het declareren van beide. In de HTML heb ik beide een id gegeven en daarna ben ik ze binnen de javascript gaan aanroepen.
-
-```js
+```
 var svgLeft = d3.select("#SVGleft"),
     marginL = {
         top: 20,
@@ -17,9 +16,6 @@ var svgLeft = d3.select("#SVGleft"),
         bottom: 30,
         left: 40
     },
-    ```
-    
-    ```js
     widthL = +svgLeft.attr("width") - marginL.left - marginL.right,
     heightL = +svgLeft.attr("height") - marginL.top - marginL.bottom;
 
@@ -47,15 +43,13 @@ var gR = svgRight.append("g")
     ```
     
 Toen heb ik de code getypt die mijn dataset aanroept
-
-```js
-var data = d3.text('data.csv')
+```var data = d3.text('data.csv')
     .get(onload);
     ```
 
 Daarna ben ik bezig gegaan met het opschonen van de data. Dit heb ik gedaan door dit stuk code toe te voegen.
 
-```js
+```
 var header = doc.indexOf('65 jaar');
     var end = doc.indexOf('Centraal Bureau voor de Statistiek') - 3;
     doc = doc.substring(header, end).trim();
@@ -69,7 +63,7 @@ Ik heb de ```.slice``` gebruikt om de data van het jaar 2014 er tussenuit te hal
 
 Daarna heb ik gedeclareerd wat voor soort data er uit de ```data.csv``` file gehaald moet worden
 
-```js
+```
 function map(d) {
         return {
             Maand: (d[2]),
@@ -81,10 +75,9 @@ function map(d) {
         }
     }
     ```
-    
     Hier vertel ik welke data er in mijn rechter grafiek getoond moet worden
     
-    ```js
+    ```
     xL.domain(data.map(function (d) {
         return (d.Maand );
     }));
@@ -94,8 +87,8 @@ function map(d) {
     ```
     
 Daarna ben ik mijn grafiek verder gaan bouwen
-    ```js
-    gL.append("g")
+    ```
+gL.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + heightL + ")")
         .call(d3.axisBottom(xL).ticks(data.length))
@@ -104,7 +97,7 @@ Daarna ben ik mijn grafiek verder gaan bouwen
         .attr("dx", "2em")
         .attr("dy", "1em");
 
-    gL.append("g")
+gL.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(yL).ticks(20))
         .append("text")
@@ -113,7 +106,7 @@ Daarna ben ik mijn grafiek verder gaan bouwen
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
 
-    gL.selectAll(".bar1")
+gL.selectAll(".bar1")
         .data(data)
         .enter().append("rect")
         .attr("class", "bar1")
@@ -123,7 +116,6 @@ Daarna ben ik mijn grafiek verder gaan bouwen
         .attr("width", xL.bandwidth())
         .attr("y", heightL)
         .attr("height", 0)
-//        .style('fill', 'blue')
         .transition()
         .duration(750)
         .delay(function (d, i) {
@@ -132,27 +124,25 @@ Daarna ben ik mijn grafiek verder gaan bouwen
         .attr("y", function (d) {
             return yL(d.Totaal);
         })
-
-        .attr("height", function (d) {
+.attr("height", function (d) {
             return heightL - yL(d.Totaal);
-        });
-        ```
+        });```
 
 Vervolgens heb ik een variabelen ```data2``` aangemaak waar ik de data voor grafiek 2 in ga stoppen. Daarna heb ik er voor gezorgd dat de benodigde data uit mijn data.csv file gepakt gaat worden.
 
 
-```js
+```
 var data2 = [];
     var totalCountry = [];
     var country = '';
     data.forEach(function (d) {
         totalCountry.push(d.Maand);
-    })
+    })```
+
+    ```country = totalCountry[0];
+    data2 = data.filter(filterCountry);```
     
-    country = totalCountry[0];
-    data2 = data.filter(filterCountry);
-    
-    var noordObject = {};
+    ```var noordObject = {};
     var zuidObject = {};
     var oostObject = {};
     var westObject = {};
@@ -173,7 +163,7 @@ var data2 = [];
     
 Vervolgens heb ik er voor gezorgd dat als men op de linker grafiek bij het totaal klikt, dat er dan in de rechtergrafiek de waardes per landdeel worden laten zien.
 
-```js
+```
 d3.selectAll(".bar1").on('click', onChange);
 function onChange(e) {
         country = e.Maand;
@@ -215,7 +205,7 @@ function filterCountry(d) {
     
 Daarna heb ik er ook nog voor gezorgd dat de bars van de linker grafiek gesorteerd kunnen worden
 
-```js
+```
 d3.select("input").on("change", change);
 
   var sorteer = (function() {
