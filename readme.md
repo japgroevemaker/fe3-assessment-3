@@ -17,7 +17,9 @@ var svgLeft = d3.select("#SVGleft"),
         bottom: 30,
         left: 40
     },
+    ```
     
+    ```js
     widthL = +svgLeft.attr("width") - marginL.left - marginL.right,
     heightL = +svgLeft.attr("height") - marginL.top - marginL.bottom;
 
