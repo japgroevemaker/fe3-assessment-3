@@ -42,8 +42,7 @@ var xR = d3.scaleBand().rangeRound([0, widthR]).padding(0.1),
 
 var gR = svgRight.append("g")
     .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");
-    
-    ```
+    ````
     
 Toen heb ik de code getypt die mijn dataset aanroept
 
