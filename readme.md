@@ -41,6 +41,7 @@ var gR = svgRight.append("g")
     .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");```
     
 Toen heb ik de code getypt die mijn dataset aanroept
+
 ```var data = d3.text('data.csv')
     .get(onload);```
 
