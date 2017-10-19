@@ -59,11 +59,11 @@ var header = doc.indexOf('65 jaar');
     doc = doc.replace(/ +/g, ',')
     doc = doc.replace(/2014,/g, '')
     var data = d3.csvParseRows(doc, map).slice(0, 12);
-    ```
+```
     
 Ik heb de `.slice` gebruikt om de data van het jaar 2014 er tussenuit te halen.
 
-Daarna heb ik gedeclareerd wat voor soort data er uit de ```data.csv``` file gehaald moet worden
+Daarna heb ik gedeclareerd wat voor soort data er uit de `data.csv` file gehaald moet worden
 
 ```js
 function map(d) {
@@ -75,21 +75,20 @@ function map(d) {
             West: Number(d[6]),
             Zuid: Number(d[7])
         }
-    }
-    ```
+```
     Hier vertel ik welke data er in mijn rechter grafiek getoond moet worden
     
-    ```js
+```js
     xL.domain(data.map(function (d) {
         return (d.Maand );
     }));
     yL.domain([0, d3.max(data, function (d) {
         return d.Totaal;
     })]);
-    ```
-    
+```
 Daarna ben ik mijn grafiek verder gaan bouwen
-    ```js
+    
+```js
 gL.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + heightL + ")")
@@ -129,7 +128,7 @@ gL.selectAll(".bar1")
 .attr("height", function (d) {
             return heightL - yL(d.Totaal);
         });
-        ```
+```
 
 Vervolgens heb ik een variabelen ```data2``` aangemaak waar ik de data voor grafiek 2 in ga stoppen. Daarna heb ik er voor gezorgd dat de benodigde data uit mijn data.csv file gepakt gaat worden.
 
@@ -204,7 +203,7 @@ var barElement = gR.selectAll(".bar2")
 function filterCountry(d) {
         return (d.Maand === country);
     };
-    ```
+```
     
 Daarna heb ik er ook nog voor gezorgd dat de bars van de linker grafiek gesorteerd kunnen worden
 
@@ -233,6 +232,6 @@ transition.selectAll(".bar1")
       .selectAll("g")
         .delay(delay);
   }
-  ```
+```
     
     
