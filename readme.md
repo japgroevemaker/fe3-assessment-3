@@ -9,7 +9,8 @@ Daarnaast heb ik veel hulp gehad van Bjorn Volkers en Dennis Spierenburg
 ## Werkwijze
 Omdat ik 2 barcharts wil laten zien, ben ik eerst begonnen met het declareren van beide. In de HTML heb ik beide een id gegeven en daarna ben ik ze binnen de javascript gaan aanroepen.
 
-```jsvar svgLeft = d3.select("#SVGleft"),
+```js
+var svgLeft = d3.select("#SVGleft"),
     marginL = {
         top: 20,
         right: 20,
