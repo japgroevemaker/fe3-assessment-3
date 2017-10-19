@@ -1,0 +1,39 @@
+.bar1 {
+  fill: steelblue;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+}
+
+.bar1:hover {
+  fill: brown;
+    cursor: pointer;
+}
+
+.bar2 {
+  fill: darkred;
+}
+
+.bar2:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+#SVGleft {
+    margin: auto 0em;
+    overflow: visible;
+}
+
+#SVGright {
+    margin: auto 0em;
+    overflow: visible;
+}
+
+h1 {
+    font-size: 1em;
+}
