@@ -76,7 +76,7 @@ function map(d) {
             Zuid: Number(d[7])
         }
 ```
-    Hier vertel ik welke data er in mijn rechter grafiek getoond moet worden
+Hier vertel ik welke data er in mijn rechter grafiek getoond moet worden
     
 ```js
     xL.domain(data.map(function (d) {
