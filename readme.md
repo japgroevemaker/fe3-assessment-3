@@ -17,6 +17,7 @@ var svgLeft = d3.select("#SVGleft"),
         bottom: 30,
         left: 40
     },
+    
     widthL = +svgLeft.attr("width") - marginL.left - marginL.right,
     heightL = +svgLeft.attr("height") - marginL.top - marginL.bottom;
 
@@ -25,9 +26,6 @@ var xL = d3.scaleBand().rangeRound([0, widthL]).padding(0.1),
 
 var gL = svgLeft.append("g")
     .attr("transform", "translate(" + marginL.left + "," + marginL.top + ")");
-
-
-//Hier declareer ik de waardes van de rechter grafiek
 
 var svgRight = d3.select("#SVGright"),
     marginR = {
@@ -44,6 +42,7 @@ var xR = d3.scaleBand().rangeRound([0, widthR]).padding(0.1),
 
 var gR = svgRight.append("g")
     .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");
+    
     ```
     
 Toen heb ik de code getypt die mijn dataset aanroept
