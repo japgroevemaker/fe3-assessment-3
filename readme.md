@@ -9,7 +9,7 @@ Daarnaast heb ik veel hulp gehad van Bjorn Volkers en Dennis Spierenburg
 ## Werkwijze
 Omdat ik 2 barcharts wil laten zien, ben ik eerst begonnen met het declareren van beide. In de HTML heb ik beide een id gegeven en daarna ben ik ze binnen de javascript gaan aanroepen.
 
-```js
+```
 var svgLeft = d3.select("#SVGleft"),
     marginL = {
         top: 20,
@@ -42,7 +42,7 @@ var xR = d3.scaleBand().rangeRound([0, widthR]).padding(0.1),
 
 var gR = svgRight.append("g")
     .attr("transform", "translate(" + marginR.left + "," + marginR.top + ")");
-    ````
+    ```
     
 Toen heb ik de code getypt die mijn dataset aanroept
 
